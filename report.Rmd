@@ -20,9 +20,74 @@ library(tidyverse)
 ```
   
 and load the data we already wrangled:
+## Least populated states
 
 ```{r}
 load("rdas/murders.rda")
+`
+``
+
+```{r}
+murders %>% arrange(population) %>% head()
+```
+
+## 6 Most populated states
+
+```{r}
+murders %>% arrange(desc(population)) %>% head()
+```
+
+## Total murder reported and state population plot
+
+```{r}
+murders %>% ggplot() + geom_point(aes(x = population/10^6, y = total))
+```
+
+## 6 states with lowest murder rates
+
+```{r}
+murders %>% arrange(rate) %>% head()
+```
+
+## 6 states with highest population
+
+```{r}
+murders %>% arrange(desc(rate)) %>% head()
+```
+
+## 10 states with least murder rate
+
+```{r}
+murders %>% top_n(10, rate)
+```
+
+## Higest murder rates
+
+```{r}
+murders %>% arrange(desc(rate)) %>% top_n(10)
+```
+
+## Murder rate across region
+
+```{r}
+qplot(murders$region, murders$total, geom = "boxplot")
+ggsave("figs/total_region_plot.png")
+```
+
+## Murder rate across states
+
+```{r}
+murders %>% mutate(abb = reorder(abb, rate)) %>%   ggplot(aes(abb, rate)) +  
+  geom_bar(width = 0.5, stat = "identity", color = "black") +   coord_flip()
+```
+
+## US Gun murder 2010 in log scale
+
+```{r}
+murders %>% ggplot(aes(population/10^6, total, label = abb)) +      
+  geom_text(nudge_x = 0.05) +    scale_x_log10() +   scale_y_log10() +   
+  xlab("Populations in millions (log scale)") +    ylab("Total number of murders (log scale)") +   
+  ggtitle("US Gun Murders in 2010") + geom_point(size = 3, color ="red")
 ```
 
 ## Murder rate by state 
