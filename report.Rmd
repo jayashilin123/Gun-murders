@@ -20,12 +20,13 @@ library(tidyverse)
 ```
   
 and load the data we already wrangled:
-## Least populated states
 
 ```{r}
 load("rdas/murders.rda")
-`
-``
+```
+
+
+## Least populated states
 
 ```{r}
 murders %>% arrange(population) %>% head()
