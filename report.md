@@ -149,12 +149,6 @@ qplot(murders$region, murders$total, geom = "boxplot")
 
 ![](report_files/figure-markdown_github/unnamed-chunk-9-1.png)
 
-``` r
-ggsave("figs/total_region_plot.png")
-```
-
-    ## Saving 7 x 5 in image
-
 Murder rate across states
 -------------------------
 
@@ -176,10 +170,3 @@ murders %>% ggplot(aes(population/10^6, total, label = abb)) +
 ```
 
 ![](report_files/figure-markdown_github/unnamed-chunk-11-1.png)
-
-Murder rate by state
---------------------
-
-We note the large state to state variability by generating a barplot showing the murder rate by state:
-
-![](report_files/figure-markdown_github/murder-rate-by-state-1.png)
