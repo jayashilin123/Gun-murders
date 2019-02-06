@@ -1,6 +1,5 @@
 Murders
 ================
-December 19, 2018
 
 Introduction
 ------------
@@ -12,6 +11,8 @@ We are going to use the following library:
 ``` r
 library(tidyverse)
 ```
+
+    ## Warning: package 'tidyverse' was built under R version 3.5.2
 
 and load the data we already wrangled:
 

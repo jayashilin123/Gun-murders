@@ -1,7 +1,7 @@
 ---
 title: "Murders"
 author: 
-date: "December 19, 2018"
+date:
 output: github_document
 ---
 
